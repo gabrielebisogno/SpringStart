@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- Spring Container creates only one instance of the bean , and all request 
+     for the bean will crate a shared reference to the same bean / scope = SINGLETON
+     prototype = creates a new bean instance for each container request, so different instance.
+     request, session,global-session
+     -->
+     
+	<!-- define the beans -->
+	
+	<!-- define the dependency -->
+	<bean id="myFortuneService"
+ 		class="com.luv2code.springdemo.HappyFortuneService">	 	
+ 	</bean>
+ 	
+ 	<bean id="SuperFortune"
+ 		class="com.luv2code.springdemo.SuperFortune">	 	
+ 	</bean>
+ 	
+   	<bean id="myCoach"
+ 		class="com.luv2code.springdemo.TrackCoach"
+ 		scope="singleton">	
+ 		<!-- set up constructor injection -->
+ 		<!-- will create the object for me, and create the constructor -->
+ 		<constructor-arg ref= "myFortuneService"/>	 		
+ 	</bean>
+
+
+</beans>
+
+
+     
+     
+
+
+
+
